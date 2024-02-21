@@ -16,6 +16,10 @@ def extract_emails_from_pdf(pdf_path):
             page = pdf_reader.pages[page_num]
             text = page.extract_text()
             emails.update(re.findall(email_pattern, text))
+    
+    with open("emails.csv", 'w') as extracted_emails:
+        for i in emails:
+            extracted_emails.write(i + '\n')
 
     return emails
 
